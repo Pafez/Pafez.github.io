@@ -7,33 +7,36 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     number: "01",
-    title: "Project Name One",
-    description: "A one-sentence description of the problem this project solves and what you built.",
-    tags: ["JavaScript", "React", "API"],
+    title: "Evo",
+    description: "A Game of Life-inspired simulation where individual cells evolve through randomized behavior and natural selection, using reward and punishment to explore how cooperative multicellular behavior can emerge from simple agents.",
+    tags: ["C", "raylib", "Simulation", "Evolution"],
     github: "#",
     demo: "#"
   },
+
   {
     number: "02",
-    title: "Project Name Two",
-    description: "A backend, systems, or software-engineering project demonstrating a different skill set.",
-    tags: ["Java", "Spring Boot", "SQL"],
+    title: "FlashNote",
+    description: "An Android study application that turns photographed notes into searchable, editable text and organizes them into decks of Flashcards using OCR and local storage.",
+    tags: ["Java", "Android", "ML Kit", "Room"],
     github: "#",
     demo: "#"
   },
+
   {
     number: "03",
-    title: "Project Name Three",
-    description: "A data, AI, algorithms, or experimental project that shows how you approach technical problems.",
-    tags: ["Python", "Algorithms", "Data"],
+    title: "PressStart",
+    description: "A 2D platformer created for a 30-hour game jam where the player becomes a sword-wielding cursor, using dashes, sword jabs, and embedded movement to chase the Start button.",
+    tags: ["Godot", "GDScript", "Game Dev", "Physics"],
     github: "#",
     demo: "#"
   },
+
   {
     number: "04",
-    title: "Project Name Four",
-    description: "Optional fourth project. Delete this object if you only want three featured projects.",
-    tags: ["C++", "Systems", "Linux"],
+    title: "Melodia",
+    description: "An Osu!mania / Piano Tiles style rhythm game that lets players transform MIDI of their favorite songs into a playable beatmap.",
+    tags: ["Java", "libGDX", "MIDI", "Game Dev"],
     github: "#",
     demo: "#"
   }
@@ -115,37 +118,51 @@ gsap.from(".about-copy > *", {
 });
 
 /* Projects: cards slide in + hover inversion */
+/* Projects: cards slide in + hover inversion */
 gsap.utils.toArray(".project-card").forEach((card, i) => {
   gsap.from(card, {
-    y: 70, opacity: 0, duration: .8, delay: i * .04,
-    scrollTrigger: { trigger: card, start: "top 88%" }
+    y: 70,
+    opacity: 0,
+    duration: .8,
+    delay: i * .04,
+    scrollTrigger: {
+      trigger: card,
+      start: "top 88%"
+    }
   });
 
-  const fill = card.querySelector(":scope::before"); // intentionally unused; CSS pseudo-element handles fill
+  const textElements = card.querySelectorAll(
+    "h3, p, .project-number, .project-tags span, .project-links a"
+  );
+
   card.addEventListener("mouseenter", () => {
-    gsap.to(card, { x: 10, duration: .35, ease: "power2.out" });
-    gsap.to(card.querySelectorAll("h3, p, .project-number, .project-tags span, .project-links a"), {
-      color: "#08090b", borderColor: "rgba(8,9,11,.25)", duration: .25
+    gsap.to(card, {
+      x: 10,
+      duration: .35,
+      ease: "power2.out"
     });
-    gsap.to(card, { "--fill": "0%" });
-    gsap.to(card, { duration: .45, ease: "power2.out" });
-    gsap.fromTo(card, { "--dummy": 0 }, { "--dummy": 1, duration: .45 });
-    card.style.setProperty("--hover", "1");
-    gsap.to(card, { duration: .01 });
-    card.querySelector(".project-info").style.position = "relative";
-    gsap.to(card, { duration: .01 });
-    // Animate pseudo-element indirectly with a custom CSS variable.
-    gsap.to(card, { "--fillY": "0%", duration: .45, ease: "power2.out",
-      onUpdate: () => card.style.setProperty("--fillY", getComputedStyle(card).getPropertyValue("--fillY"))
+
+    gsap.to(textElements, {
+      color: "#08090b",
+      borderColor: "rgba(8,9,11,.25)",
+      duration: .25,
+      ease: "power2.out"
     });
-    card.style.setProperty("--fillY", "0%");
   });
+
   card.addEventListener("mouseleave", () => {
-    gsap.to(card, { x: 0, duration: .35, ease: "power2.out" });
-    gsap.to(card.querySelectorAll("h3, p, .project-number, .project-tags span, .project-links a"), {
-      color: "", borderColor: "", duration: .25
+    gsap.to(card, {
+      x: 0,
+      duration: .35,
+      ease: "power2.out"
     });
-    card.style.setProperty("--fillY", "101%");
+
+    gsap.to(textElements, {
+      color: "",
+      borderColor: "",
+      duration: .25,
+      ease: "power2.out"
+    });
   });
 });
 
@@ -163,8 +180,13 @@ gsap.utils.toArray(".skill-group").forEach((group, i) => {
     scrollTrigger: { trigger: group, start: "top 82%" }
   });
   gsap.from(group.querySelectorAll(".skill-cloud span"), {
-    y: 20, opacity: 0, duration: .4, stagger: .05,
-    scrollTrigger: { trigger: group, start: "top 78%" }
+    y: 20,
+    duration: .4,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: group,
+      start: "top 78%"
+    }
   });
 });
 
