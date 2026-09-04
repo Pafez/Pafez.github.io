@@ -8,7 +8,7 @@ const projects = [
   {
     number: "01",
     title: "Evo",
-    description: "A Game of Life-inspired simulation where individual cells evolve through randomized behavior and natural selection, using reward and punishment to explore how cooperative multicellular behavior can emerge from simple agents.",
+    description: "A Life-like simulation where individual cells evolve through randomized behavior and natural selection, using reward and punishment to explore how cooperative multicellular behavior can emerge from simple agents.",
     tags: ["C", "raylib", "Simulation", "Evolution"],
     github: "#",
     demo: "#"
@@ -19,7 +19,7 @@ const projects = [
     title: "FlashNote",
     description: "An Android study application that turns photographed notes into searchable, editable text and organizes them into decks of Flashcards using OCR and local storage.",
     tags: ["Java", "Android", "ML Kit", "Room"],
-    github: "#",
+    github: "https://github.com/Pafez/FlashNote",
     demo: "#"
   },
 
@@ -28,7 +28,7 @@ const projects = [
     title: "PressStart",
     description: "A 2D platformer created for a 30-hour game jam where the player becomes a sword-wielding cursor, using dashes, sword jabs, and embedded movement to chase the Start button.",
     tags: ["Godot", "GDScript", "Game Dev", "Physics"],
-    github: "#",
+    github: "https://github.com/Pafez/ict-game-jam",
     demo: "#"
   },
 
@@ -37,7 +37,7 @@ const projects = [
     title: "Melodia",
     description: "An Osu!mania / Piano Tiles style rhythm game that lets players transform MIDI of their favorite songs into a playable beatmap.",
     tags: ["Java", "libGDX", "MIDI", "Game Dev"],
-    github: "#",
+    github: "https://github.com/Pafez/Melodia",
     demo: "#"
   }
 ];
